@@ -1,0 +1,21 @@
+var map = L.map('map', {
+    center: [-18.014452, -70.251854],
+    zoom: 18,
+    minZoom: 10,
+    maxZoom: 20,
+    maxBounds: [[-18.4763,-71.1382], [-16.8012,-69.4353]]
+    });
+    var basemapOSM = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+attribution: '&copy; <ahref="http://osm.org/copyright"> OpenStreetMap</a> contributor'
+});
+basemapOSM.addTo(map);
+
+    
+    var centros = L.tileLayer.wms("http://localhost:8080/geoserver/proyecto_webgis/wms?", {
+	   layers: "proyecto_webgis:restaurantes_tacna", //gisweb:centros educativos moquegua
+	   format: 'image/png',
+	   transparent: true,
+	   version: '1.1.1',
+	   attribution: "SENCICO"
+	});
+centros.addTo(map);
